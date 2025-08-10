@@ -88,9 +88,9 @@
             text = rgb(180, 180, 180),
             text_outline = rgb(0, 0, 0),
             background = rgb(20, 20, 20),
-            ["1"] = hex("#245771"), 
-            ["2"] = hex("#215D63"),
-            ["3"] = hex("#1E6453"),
+            ["1"] = hex("#2b2b2b"), 
+            ["2"] = hex("#2b2b2b"),
+            ["3"] = hex("#2b2b2b"),
         },
 
         utility = {
