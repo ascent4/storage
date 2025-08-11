@@ -1,5 +1,5 @@
--- Hi finobe here, this got leaked cuz i had a polish nazi (??) customer who tried leaking personal info about me for whatever reason??
--- Anyways I fixed the code up so if you're using the other one on my github then use this one instead
+-- Priv9 remake 
+-- Credits to Finobe
 
 -- Variables 
     local uis = game:GetService("UserInputService") 
@@ -88,9 +88,9 @@
             text = rgb(180, 180, 180),
             text_outline = rgb(0, 0, 0),
             background = rgb(20, 20, 20),
-            ["1"] = hex("#2b2b2b"), 
-            ["2"] = hex("#2b2b2b"),
-            ["3"] = hex("#2b2b2b"),
+            ["1"] = hex("#245771"), 
+            ["2"] = hex("#215D63"),
+            ["3"] = hex("#1E6453"),
         },
 
         utility = {
@@ -218,12 +218,12 @@
             
             local ProggyTiny = Register_Font("Tahoma", 200, "Normal", {
                 Id = "Tahoma.ttf",
-                Font = game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/tahoma_bold.ttf"),
+                Font = game:HttpGet("https://github.com/ascent4/storage/raw/refs/heads/main/fonts/tahoma_bold.ttf"),
             })
 
             local ProggyClean = Register_Font("ProggyClean", 200, "normal", {
                 Id = "ProggyClean.ttf",
-                Font = game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/ProggyClean.ttf")
+                Font = game:HttpGet("https://github.com/ascent4/storage/raw/refs/heads/main/fonts/ProggyClean.ttf")
             })
             
             fonts = {
@@ -527,7 +527,7 @@
         function library:window(properties)
             local cfg = {
                 name = properties.name or properties.Name or "priv9",
-                size = properties.size or properties.Size or dim2(0, 600, 0, 400), 
+                size = properties.size or properties.Size or dim2(0, 620, 0, 420), 
                 selected_tab 
             }
 
