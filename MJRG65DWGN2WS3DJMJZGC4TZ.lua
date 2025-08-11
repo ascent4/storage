@@ -4897,115 +4897,130 @@
             end
         end 
         
-        function Notifications:Create(properties)
-            local Cfg = {
-                Name = properties.Name or "This is a title!";
-                Lifetime = properties.LifeTime or 3;
-                
-                Items = {};
-                outline;
-            }
-
-            local Items = Cfg.Items; do 
-                Items.Outline = Library:Create( "Frame" , {
-                    Parent = Library.Items;
-                    Size = dim2(0, 0, 0, 18);
-                    Name = "\0";
-                    AnchorPoint = vec2(1, 0);
-                    Position = dim2(0, 7, 0, 46);
-                    BorderColor3 = rgb(0, 0, 0);
-                    BorderSizePixel = 0;
-                    AutomaticSize = Enum.AutomaticSize.XY;
-                    BackgroundColor3 = rgb(52, 52, 52)
-                });
-                
-                Items.Inline = Library:Create( "Frame" , {
-                    Parent = Items.Outline;
-                    Name = "\0";
-                    Position = dim2(0, 1, 0, 1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    BorderSizePixel = 0;
-                    AutomaticSize = Enum.AutomaticSize.XY;
-                    BackgroundColor3 = rgb(5, 5, 5)
-                });
-                
-                Library:Create( "UIPadding" , {
-                    PaddingTop = dim(0, 7);
-                    PaddingBottom = dim(0, 6);
-                    Parent = Items.Inline;
-                    PaddingRight = dim(0, 8);
-                    PaddingLeft = dim(0, 4)
-                });
-                
-                Items.Text = Library:Create( "TextLabel" , {
-                    FontFace = Library.Font;
-                    Parent = Items.Inline;
-                    TextColor3 = rgb(255, 255, 255);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Text = Cfg.Name;
-                    Name = "\0";
-                    AutomaticSize = Enum.AutomaticSize.XY;
-                    Size = dim2(1, -4, 1, 0);
-                    Position = dim2(0, 4, 0, -2);
-                    BackgroundTransparency = 1;
-                    TextXAlignment = Enum.TextXAlignment.Left;
-                    BorderSizePixel = 0;
-                    ZIndex = 2;
-                    TextSize = 12;
-                    BackgroundColor3 = rgb(255, 255, 255)
-                });
-                
-                Library:Create( "UIPadding" , {
-                    PaddingBottom = dim(0, 1);
-                    PaddingRight = dim(0, 1);
-                    Parent = Items.Outline
-                });
-                
-                Items.AccentLine = Library:Create( "Frame" , {
-                    Parent = Items.Outline;
-                    Name = "\0";
-                    Position = dim2(0, 2, 1, -1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(1, -1, 0, 1);
-                    BorderSizePixel = 0;
-                    ZIndex = 100;
-                    BackgroundColor3 = themes.preset.accent
-                });	Library:Themify(Items.AccentLine, "accent", "BackgroundColor3")
-                
-                Items.Accent = Library:Create( "Frame" , {
-                    Parent = Items.Outline;
-                    Name = "\0";
-                    ZIndex = 100;
-                    Position = dim2(0, 1, 0, 1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(0, 1, 1, -1);
-                    BorderSizePixel = 0;
-                    BackgroundColor3 = themes.preset.accent
-                });	Library:Themify(Items.Accent, "accent", "BackgroundColor3")                    
-            end 
+    function Notifications:Create(properties)
+        local Cfg = {
+            Name = properties.Name or "Notification";
+            Lifetime = properties.LifeTime or 3;
             
-            local index = #Notifications.Notifs + 1
-            Notifications.Notifs[index] = Items.Outline
+            Items = {};
+        }
 
-            -- Notifications:FadeNotifs(Items.Outline, false)
+        local Items = Cfg.Items; do 
+            Items.Notification = Library:Create( "Frame" , {
+                Parent = Library.Items;
+                Name = "\0";
+                Position = dim2(0, 20, 0, 60);
+                BorderColor3 = rgb(0, 0, 0);
+                BorderSizePixel = 0;
+                AutomaticSize = Enum.AutomaticSize.X;
+                BackgroundColor3 = themes.preset.inline
+            }); Library:Themify(Items.Notification, "inline", "BackgroundColor3")
+
+            local stroke = Library:Create( "UIStroke" , {
+                Color = themes.preset.outline;
+                LineJoinMode = Enum.LineJoinMode.Miter;
+                Parent = Items.Notification
+            }); Library:Themify(stroke, "outline", "Color")
             
-            local offset = Notifications:RefreshNotifications()
+            Items.Holder = Library:Create( "Frame" , {
+                Parent = Items.Notification;
+                Name = "\0";
+                Position = dim2(0, 1, 0, 1);
+                BorderColor3 = rgb(0, 0, 0);
+                Size = dim2(1, -2, 1, -2);
+                BorderSizePixel = 0;
+                BackgroundColor3 = rgb(255, 255, 255)
+            });
+            
+            local grad = Library:Create( "UIGradient" , {
+                Rotation = 90;
+                Parent = Items.Holder;
+                Color = rgbseq{rgbkey(0, themes.preset.inline), rgbkey(1, themes.preset.gradient)}
+            }); Library:SaveGradient(grad, "Selected");
+            
+            Items.Accent = Library:Create( "Frame" , {
+                Name = "\0";
+                Parent = Items.Notification;
+                BorderColor3 = rgb(0, 0, 0);
+                Size = dim2(1, 0, 0, 2);
+                BorderSizePixel = 0;
+                BackgroundColor3 = themes.preset.accent
+            }); Library:Themify(Items.Accent, "accent", "BackgroundColor3")
+            
+            Library:Create( "UIGradient" , {
+                Rotation = 90;
+                Parent = Items.Accent;
+                Color = rgbseq{rgbkey(0, rgb(255, 255, 255)), rgbkey(1, rgb(158, 158, 158))}
+            });
+            
+            Items.Outline = Library:Create( "Frame" , {
+                Parent = Items.Notification;
+                Name = "\0";
+                Position = dim2(0, 0, 0, 2);
+                BorderColor3 = rgb(0, 0, 0);
+                Size = dim2(1, 0, 0, 1);
+                BorderSizePixel = 0;
+                BackgroundColor3 = themes.preset.outline
+            }); Library:Themify(Items.Outline, "outline", "BackgroundColor3")
+            
+            Items.NotificationTitle = Library:Create( "TextLabel" , {
+                FontFace = Library.Font;
+                TextColor3 = rgb(239, 239, 239);
+                BorderColor3 = rgb(0, 0, 0);
+                RichText = true;
+                Text = Cfg.Name;
+                Parent = Items.Notification;
+                Name = "\0";
+                BackgroundTransparency = 1;
+                Position = dim2(0, 14, 0, -2);
+                BorderSizePixel = 0;
+                AutomaticSize = Enum.AutomaticSize.XY;
+                TextSize = 12;
+                BackgroundColor3 = rgb(255, 255, 255)
+            });
+            
+            Library:Create( "UIStroke" , {
+                Parent = Items.NotificationTitle;
+                LineJoinMode = Enum.LineJoinMode.Miter
+            });
+            
+            Library:Create( "UIPadding" , {
+                PaddingTop = dim(0, 5);
+                PaddingBottom = dim(0, 2);
+                Parent = Items.NotificationTitle;
+                PaddingRight = dim(0, 5);
+                PaddingLeft = dim(0, 5)
+            });
+            
+            Library:Create( "ImageLabel" , {
+                BorderColor3 = rgb(0, 0, 0);
+                Parent = Items.Notification;
+                Image = "rbxassetid://133601737414791";
+                BackgroundTransparency = 1;
+                Position = dim2(0, 3, 0, 2);
+                Size = dim2(0, 11, 0, 15);
+                BorderSizePixel = 0;
+                BackgroundColor3 = rgb(255, 255, 255)
+            });
+        end 
+        
+        local index = #Notifications.Notifs + 1
+        Notifications.Notifs[index] = Items.Notification
 
-            Items.Outline.Position = dim_offset(20, offset)
+        local offset = Notifications:RefreshNotifications()
+        Items.Notification.Position = dim_offset(20, offset)
 
-            Library:Tween(Items.Outline, {AnchorPoint = vec2(0, 0)})
-            Library:Tween(Items.AccentLine, {Size = dim2(0, -2, 0, 1)}, TweenInfo.new(Cfg.Lifetime, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut, 0, false, 0))
-
-            print(Items.AccentLine.BackgroundTransparency)
-            task.spawn(function()
-                task.wait(Cfg.Lifetime)
-                Notifications.Notifs[index] = nil
-                Notifications:FadeNotifs(Items.Outline, true)
-                Library:Tween(Items.Outline, {AnchorPoint = vec2(1, 0)})
-                task.wait(1)
-                Items.Outline:Destroy() 
-            end)
-        end
+        Library:Tween(Items.Notification, {AnchorPoint = vec2(0, 0)})
+        
+        task.spawn(function()
+            task.wait(Cfg.Lifetime)
+            Notifications.Notifs[index] = nil
+            Notifications:FadeNotifs(Items.Notification, true)
+            Library:Tween(Items.Notification, {AnchorPoint = vec2(1, 0)})
+            task.wait(1)
+            Items.Notification:Destroy() 
+        end)
+    end
     --
 -- 
 
