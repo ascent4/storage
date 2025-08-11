@@ -1,5 +1,3 @@
--- Bbot v3 ui
-
 -- Variables 
     -- Services
     local InputService, HttpService, GuiService, RunService, Stats, CoreGui, TweenService, SoundService, Workspace, Players = game:GetService("UserInputService"), game:GetService("HttpService"), game:GetService("GuiService"), game:GetService("RunService"), game:GetService("Stats"), game:GetService("CoreGui"), game:GetService("TweenService"), game:GetService("SoundService"), game:GetService("Workspace"), game:GetService("Players")
@@ -15,7 +13,7 @@
 
 -- Library init
     getgenv().Library = {
-        Directory = "Cascade",
+        Directory = "Bbot v3",
         Folders = {
             "/fonts",
             "/configs",
@@ -34,7 +32,7 @@
             inline = rgb(50, 50, 50);
             gradient = rgb(40, 40, 40);
             outline = rgb(20, 20, 20);
-            accent = rgb(50, 119, 186);
+            accent = rgb(128, 70, 164);
             background = rgb(30, 30, 30);
             text_color = rgb(239, 239, 239);
             text_outline = rgb(0, 0, 0);
@@ -151,7 +149,7 @@
         
         local Verdana = RegisterFont("Verawdawdawdwaddana", 400, "Normal", {
             Id = "Verdanawdawdwada.ttf",
-            Font = game:HttpGet("https://github.com/ascent4/storage/raw/refs/heads/main/fonts/Verdana-Font.ttf"),
+            Font = game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/fs-tahoma-8px.ttf"),
         })
 
         Library.Font = Font.new(Verdana, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
@@ -1372,7 +1370,7 @@
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Name = properties.Name or "Window";
+                Name = properties.Name or "nebula";
                 Size = properties.Size or dim2(0, 455, 0, 605);
                 TabInfo;
                 Items = {};
@@ -1897,7 +1895,7 @@
                         TextColor3 = rgb(239, 239, 239);
                         BorderColor3 = rgb(0, 0, 0);
                         RichText = true;
-                        Text = Cfg.Name;
+                        Text = Cfg.Name .. "lua";
                         Parent = Items.Watermark;
                         Name = "\0";
                         BackgroundTransparency = 1;
@@ -4802,7 +4800,7 @@
             Section:Toggle({Name = "Keybind List", Flag = "KeybindList", Callback = window.ToggleKeybindList})
             Section:Toggle({Name = "Toggle Status", Flag = "Status", Callback = window.ToggleStatus})
             Section:Textbox({Name = "Custom Menu Name", Callback = window.ChangeTitle, Default = window.Name, Placeholder = "Title name here..."})
-            Section:Textbox({Name = "Custom Watermark Name", Callback = window.ChangeWatermarkTitle, Default = window.Name, Placeholder = "Title name here..."})
+            Section:Textbox({Name = "Custom Watermark Name", Callback = window.ChangeWatermarkTitle, Default = window.Name .. ".lua", Placeholder = "Title name here..."})
             Section:Dropdown({Name = "Tweening Style", Options = {"Linear", "Sine", "Back", "Quad", "Quart", "Quint", "Bounce", "Elastic", "Exponential", "Circular", "Cubic"}, Flag = "LibraryEasingStyle", Default = "Quint", Callback = function(Option)
                 Library.EasingStyle = Enum.EasingStyle[Option]
             end});
