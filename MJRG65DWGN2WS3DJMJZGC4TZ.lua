@@ -4908,14 +4908,14 @@
             local Items = Cfg.Items; do 
                 Items.Outline = Library:Create( "Frame" , {
                     Parent = Library.Items;
-                    Size = dim2(0, 0, 0, 18);
+                    Size = dim2(0, 0, 0, 15);
                     Name = "\0";
                     AnchorPoint = vec2(1, 0);
                     Position = dim2(0, 7, 0, 46);
                     BorderColor3 = rgb(0, 0, 0);
                     BorderSizePixel = 0;
                     AutomaticSize = Enum.AutomaticSize.XY;
-                    BackgroundColor3 = rgb(52, 52, 52)
+                    BackgroundColor3 = rgb(20, 20, 20)
                 });
                 
                 Items.Inline = Library:Create( "Frame" , {
@@ -4925,7 +4925,7 @@
                     BorderColor3 = rgb(0, 0, 0);
                     BorderSizePixel = 0;
                     AutomaticSize = Enum.AutomaticSize.XY;
-                    BackgroundColor3 = rgb(45, 45, 45)
+                    BackgroundColor3 = rgb(47, 47, 47)
                 });
                 
                 Library:Create( "UIPadding" , {
@@ -4954,6 +4954,12 @@
                     BackgroundColor3 = rgb(255, 255, 255)
                 });
                 
+                Library:Create( "UIStroke" , {
+                    Parent = Items.Text;
+                    LineJoinMode = Enum.LineJoinMode.Miter
+                });
+
+
                 Library:Create( "UIPadding" , {
                     PaddingBottom = dim(0, 1);
                     PaddingRight = dim(0, 1);
