@@ -1373,7 +1373,7 @@
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Name = properties.Name or "nebula";
+                Name = properties.Name or "Window";
                 Size = properties.Size or dim2(0, 455, 0, 605);
                 TabInfo;
                 Items = {};
@@ -1898,7 +1898,7 @@
                         TextColor3 = rgb(239, 239, 239);
                         BorderColor3 = rgb(0, 0, 0);
                         RichText = true;
-                        Text = Cfg.Name .. "lua";
+                        Text = Cfg.Name;
                         Parent = Items.Watermark;
                         Name = "\0";
                         BackgroundTransparency = 1;
@@ -1920,17 +1920,6 @@
                         Parent = Items.WatermarkTitle;
                         PaddingRight = dim(0, 5);
                         PaddingLeft = dim(0, 5)
-                    });
-                    
-                    Library:Create( "ImageLabel" , {
-                        BorderColor3 = rgb(0, 0, 0);
-                        Parent = Items.Watermark;
-                        Image = "rbxassetid://1487307307";
-                        BackgroundTransparency = 1;
-                        Position = dim2(0, 3, 0, 2);
-                        Size = dim2(0, 11, 0, 15);
-                        BorderSizePixel = 0;
-                        BackgroundColor3 = rgb(255, 255, 255)
                     });
                 --
             end
