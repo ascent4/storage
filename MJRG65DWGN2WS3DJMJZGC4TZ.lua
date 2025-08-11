@@ -1,5 +1,4 @@
--- Probably my newest code up to date thats available publicly. 
--- Made around march - april 2025
+-- Bbot v3 ui
 
 -- Variables 
     -- Services
@@ -16,7 +15,7 @@
 
 -- Library init
     getgenv().Library = {
-        Directory = "Bbot v3",
+        Directory = "Cascade",
         Folders = {
             "/fonts",
             "/configs",
@@ -152,7 +151,7 @@
         
         local Verdana = RegisterFont("Verawdawdawdwaddana", 400, "Normal", {
             Id = "Verdanawdawdwada.ttf",
-            Font = game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/fs-tahoma-8px.ttf"),
+            Font = game:HttpGet("https://github.com/ascent4/storage/raw/refs/heads/main/fonts/Verdana-Font.ttf"),
         })
 
         Library.Font = Font.new(Verdana, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
