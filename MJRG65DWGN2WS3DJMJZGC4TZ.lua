@@ -147,12 +147,12 @@
             return getcustomasset(Name .. ".font");
         end
         
-        local Verdana = RegisterFont("Verawdawdawdwaddana", 400, "Normal", {
-            Id = "Verdanawdawdwada.ttf",
+        local Tahoma = RegisterFont("Tahoma-8px", 400, "Normal", {
+            Id = "Tahoma-8px.ttf",
             Font = game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/fs-tahoma-8px.ttf"),
         })
 
-        Library.Font = Font.new(Verdana, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+        Library.Font = Font.new(Tahoma, Enum.FontWeight.Regular, Enum.FontStyle.Normal);
     end
 --
 
