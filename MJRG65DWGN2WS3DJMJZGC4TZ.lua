@@ -4908,7 +4908,7 @@
             local Items = Cfg.Items; do 
                 Items.Outline = Library:Create( "Frame" , {
                     Parent = Library.Items;
-                    Size = dim2(0, 0, 0, 15);
+                    Size = dim2(0, 0, 0, 9);
                     Name = "\0";
                     AnchorPoint = vec2(1, 0);
                     Position = dim2(0, 7, 0, 46);
